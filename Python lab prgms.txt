@@ -1,0 +1,399 @@
+      1) LINEAR SEARCH:
+
+def linearSearch(array,n,x):
+    for i in range(0,n):
+        if(array[i] == x):
+            return i
+    return -1
+array = [2,4,0,1,9]
+x = eval(input("enter the element to be searched: "))
+n = len(array)
+result = linearSearch(array,n,x)
+if(result == -1):
+    print("element not found")
+else:
+    print("element found at index: ",result)
+
+
+
+      2)SORTED LIST
+
+import bisect
+def insert(list,n):
+    bisect.insort(list,n)
+    return list
+list=[1,2,4]
+n=eval(input("enter the value to be inserted: "))
+print(insert(list,n))
+
+
+       3)OOPS USING ENCAP,OVERLOAD,INHERI
+
+
+class Base:
+    def __init__(self):
+        self.a = 10
+        self._b = 20
+    def display(self):
+        print("the values are: ")
+        print(f"a={self.a} b={self._b}")
+class Derived(Base):
+    def __init__(self):
+        Base.__init__(self)
+        self.d = 30
+        def display(self):
+            Base.display(self)
+            print(f"d={self.d}")
+    def __add__(self, ob):
+        return self.a + ob.a+self.d + ob.d
+obj1 = Base()
+obj2 = Derived()
+obj3 = Derived()
+obj2.display()
+obj3.display()
+print("\n Sum of two objects:",obj2 + obj3)
+        
+
+
+       4)demonstrate importing datasets,cleaning the data...........
+
+import pandas as pd
+df=pd.read_csv("C:\\Users\\data\\Toyota.csv",skiprows=1)
+df
+
+
+
+import pandas as pd
+df=pd.read_csv("C:\\Users\\data\\Toyota.csv",skiprows=1,names=['a','b','c','d','e','f','g','h'])
+df
+
+
+import pandas as pd
+df=pd.read_csv("C:\\Users\\data\\Toyota.csv",nrows=5)
+df
+
+
+import pandas as pd
+import numpy as np
+df=pd.read_csv("C:\\Users\\data\\Toyota.csv")
+new_df=df.replace(-7777,np.NaN)
+df
+
+
+weather_data=[
+    ('1/1/2017',32,6,'rain'),
+    ('1/2/2017',35,6,'sunny'),
+    ('1/3/2017',28,2,'snow'),
+]
+import pandas as pd
+df=pd.DataFrame(weather_data,columns=["day","temperature","windspeed","event"])
+df
+
+
+weather_data=[
+{'day':'1/1/2017','temp':32,'windspeed':6,'event':'rain'},
+{'day':'1/2/2017','temp':35,'windspeed':7,'event':'sunny'},
+{'day':'1/1/2017','temp':28,'windspeed':2,'event':'snow'},
+]
+import pandas as pd
+df=pd.DataFrame(weather_data)
+df
+
+
+import pandas as pd
+import numpy as np
+df=pd.read_csv("C:\\Users\\data\\Toyota.csv")
+new_df=df.replace(-9999,np.NaN)
+df
+
+new_df=df.replace(-99,np.NaN)
+new_df
+
+new_df=df.replace([-99999,-88888],np.NaN)
+new_df
+
+new_df=df.replace(
+{
+'temperature':-99999,
+'windspeed':-99999,
+'event':'0'
+},np.NaN)
+new_df
+
+
+import pandas as pd
+df=pd.DataFrame(weather_data)
+new_df=df.replace(
+{
+'temperature':-99999,
+'windspeed':-99999,
+'event':'0'
+},np.NaN)
+new_df
+
+
+new_df=df.replace(
+{
+-99999:np.NaN,
+'No event':'Sunny'
+})
+new_df
+
+
+new_df=df.replace({'[A-Za-z]':' '},regex=True)
+new_df
+
+
+new_df=df.replace({
+    'temperature':'[A-Za-z]',
+    'windspeed':'[A-Za-z]'},'',regex=True)
+new_df
+
+
+df=pd.DataFrame({
+    'score':['exceptional','average','good','poor','average','exceptional'],
+    'student':['rob','maya','parthiv','tom','julian','erica']
+})
+df.replace(['poor','average','good','exceptional'],[1,2,3,4])
+
+
+import pandas as pd
+df=pd.read_csv("C:\\Users\\data\\Toyota.csv")
+df
+
+df.head()
+
+df.tail()
+
+import pandas as pd
+df=pd.read_csv("C:\\Users\\data\\Toyota.csv")
+df.columns
+
+df.Price
+
+df.Doors
+
+df['KM']
+
+df['Price'].max()
+
+df.describe()
+
+df[df.Price>=1436]
+
+
+
+          5)python program to demonstrate searching sorting and splitting...........
+
+
+import numpy as np
+arr1=([[1,2,3],[4,5,6]])
+arr2=([[7,8,9],[9,10,11]])
+print("concatenating of two arrays\n",np.concatenate([arr1,arr2],axis=1))
+print("vertical stacking\n",np.vstack((arr1,arr2)))
+print("horizontal stacking\n",np.hstack((arr1,arr2)))
+
+
+#searching
+arr=np.array([1,2,3,4,5,4,4])
+x=np.where(arr==4)
+print(x)
+arr=np.array([6,7,8,9])
+x=np.searchsorted(arr,5)
+print(x)
+arr=np.array([1,3,5,7])
+x=np.searchsorted(arr,[2,4,6])
+print(x)
+
+
+a=np.array([[1,4],[3,1]])
+print("sorted array:",np.sort(a))
+print("\n flattened sorted array is",np.sort(a,axis=0))
+x=np.array([3,1,2])
+print("\n indices that would sort an array",np.argsort(x))
+print("\n sorted complex number",np.sort_complex([5,3,6,2,1]))
+
+
+import numpy as np
+x=np.arange(9,0)
+print(np.split(x,3))
+print(np.split(x,[3,5,6,10]))
+x=np.arange(9)
+np.array_split(x,4)
+a=np.array([[1,3,5,7,9,11],[2,4,6,8,10,12]])
+print("splitting along horizontal axis into 2parts\n",np.hsplit(a,2))
+print("splitting along vertical axis into 2parts\n",np.vsplit(a,2))
+
+
+import numpy as np
+v=np.array([1,2,3])
+w=np.array([4,5])
+print("v=",v)
+print("w=",w)
+print("\n outer product of v and w is \n")
+print(np.reshape(v,(3,1))*w)
+x=np.array([[1,2,3],[4,5,6]])
+print("x=",x)
+print("v=",v)
+print("\n x+v=",x+v)
+print("\n transposing this final result")
+print((x.T+w).T)
+print("\n x+np.reshape(w,(2,1))")
+print(x+np.reshape(w,(2,1)))
+print(x*2)
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+x=np.arange(0,3 * np.pi, 0.1)
+y_sin=np.sin(x)
+y_cos=np.cos(x)
+plt.plot(x,y_sin)
+plt.plot(x,y_cos)
+plt.xlabel('x_axis label')
+plt.ylabel('y_axis label')
+plt.title('sine and cosine')
+plt.legend(['sine','cosine'])
+plt.show()
+
+
+
+
+6)demonstrate data visualization with various types of graphs..........
+
+
+import matplotlib.pyplot as plt
+###line plot
+x1=[1,2,3,4,5]
+y1=[2,5,2,6,8]
+x2=[1,2,3,4,5]
+y2=[4,5,8,9,10]
+plt.xlabel("x axis",fontsize=12,fontstyle='italic')
+plt.ylabel("y axis",fontsize=12)
+plt.title("LINE PLOT",fontsize=15,fontname='Dejavu Sans')
+plt.plot(x1,y1,color='red',label='first graph')
+plt.plot(x2,y2,color='green',label='second graph')
+plt.legend(loc=2)
+plt.grid()
+plt.show()
+
+
+###bar plot
+x=['A','B','C','D','E']
+y=[20,40,20,60,80]
+plt.xlabel("x axis",fontsize=12)
+plt.ylabel("y axis",fontsize=12)
+plt.title("BAR PLOT",fontsize=15)
+plt.bar(x1,y1,color='red',width=0.5)
+plt.show()
+
+
+
+###Scatter plot
+x1=[1,2,3,4,5]
+y1=[2,5,2,6,8]
+x2=[1,2,3,4,5]
+y2=[4,5,8,9,10]
+plt.xlabel("x axis",fontsize=12,fontstyle='italic')
+plt.ylabel("y axis",fontsize=12)
+plt.title("LINE PLOT",fontsize=15,fontname='Dejavu Sans')
+plt.scatter(x1,y1,color='red',label='first graph')
+plt.scatter(x2,y2,color='green',s=150,marker="*",label='second graph')
+plt.plot(x2,y2,color='green')
+plt.legend(loc=3)
+plt.show()
+
+
+
+import numpy as np
+sample=np.random.randint(10,70,100)
+plt.title("HISTOGRAM",fontsize=15,fontname='Dejavu Sans')
+plt.hist(sample,rwidth=0.7)
+plt.show()
+
+
+plt.figure(figsize=(7,7))
+slices=[10,30,20,50,70]
+act=["A","B","C","D","E"]
+cols=["pink","red","green","blue","yellow"]
+plt.title("PIE CHART",fontsize=15,fontname='Dejavu Sans')
+plt.pie(slices,labels=act,colors=cols,autopct="%1.1f%%",explode=(0,0,0,0,0.1))
+plt.show()
+
+
+
+
+7)program that creates M*N integer arrays........
+
+
+import numpy as np
+a=np.array([[1,2,3],[4,5,6],[7,8,9]])
+print("printing array")
+print()
+print(a)
+print("printing numpy array attributes")
+print("1)Array dimension:",a.ndim)
+print("2)Array shape:",a.shape)
+print("3)Array size:",a.size)
+print("4)Array data type:",a.dtype)
+print("5)the length of each array item in bytes is:",a.itemsize)
+
+
+
+8)program to generation of linear regression.....
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+def estimate_coef(x,y):
+    n=np.size(x)
+    m_x=np.mean(x)
+    m_y=np.mean(y)
+    SS_xy=np.sum(y*x)-n*m_y*m_x
+    SS_xx=np.sum(x*x)-n*m_x*m_x
+    b_1=SS_xy/SS_xx
+    b_0=m_y-b_1*m_x
+    return (b_0,b_1)
+def plot_regression_line(x,y,b):
+    plt.scatter(x,y,color="m",marker="o",s=30)
+    y_pred=b[0]+b[1]*x
+    plt.plot(x,y_pred,color="g")
+    plt.xlabel('x')
+    plt.xlabel('y')
+    plt.show()
+def main():
+    x=np.array([0,1,2,3,4,5,6,7,8,9])
+    y=np.array([1,3,2,5,7,8,8,9,10,12])
+    b=estimate_coef(x,y)
+    print("estimated coefficients:\nb_0={}\nb_1={}".format(b[0],b[1]))
+    plot_regression_line(x,y,b)
+if __name__=="__main__":
+    main()
+    
+
+
+    10)Demonstrate timeseries analysis with pandas.....
+
+import pandas as pd
+df=pd.read_csv("C:\\Users\\data\\aapl.csv")
+df.head()
+
+df=pd.read_csv("C:\\Users\\data\\aapl.csv",parse_dates=["Date"],index_col="Date")
+df.tail()
+
+df.index
+
+df.loc['2008-10-08']
+
+df.loc["2008-01"]
+
+df.loc['2008-10'].head()
+
+df['2008-10'].Close.mean()
+
+df['2008'].head(2)
+
+df['2008-10']
+
+df['1984-09']
+
